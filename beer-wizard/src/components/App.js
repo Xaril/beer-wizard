@@ -3,11 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-    componentDidMount(props) {
-        fetch('http://localhost:8332/test').then(res => {
-            console.log(res)
-        });
-    }
+    
     render() {
         return (
           <div className="App">
