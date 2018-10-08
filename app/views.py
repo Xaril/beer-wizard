@@ -1,4 +1,5 @@
-#
+# This file contains all queries used by the front end to gather data for the
+# beer wizard app. It is basically a communication medium to the database.
 #
 # Author: Fredrik Omstedt
 # Date: 2018-10-08
@@ -11,6 +12,6 @@ import psycopg2.extras
 
 # Routes the address to show the interface html file
 @app.route('/')
-@app.route('/index')
-def index():
-    return render_template('beer_wizard.html')
+@app.route('/test')
+def test():
+    return jsonify({'test': 4})
