@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import {register, login, getUser} from '../../store/user/read/readDucks';
 
 const mapStateToProps = (rootState) => {
-    var home = rootState.user.read;
+    var user = rootState.user.read;
     return {
-        home: home,
+        user: user,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         register: () => dispatch(register()),
-        login: () => dispatch(login()),
+        login: (name, password) => dispatch(login(name, password)),
         getUser: () => dispatch(getUser()),
     }
 }
