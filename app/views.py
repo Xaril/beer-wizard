@@ -58,7 +58,7 @@ def get_player():
     player = ''
     try:
         # Retrieve the name of the player looked for
-        player_name = request.get_json()['name']
+        player_name = request.args['name']
 
         # Fetch the player from the database
         cur = mysql.connection.cursor()
@@ -80,7 +80,7 @@ def register_player():
     status_code = 200
     return_name = ''
     try:
-        player = json.loads(request.data)
+        player = request.args
         name = player['name']
         password = player['password']
 
@@ -104,7 +104,7 @@ def login_player():
     return_name = ''
     success = False
     try:
-        player = json.loads(request.data)
+        player = request.args
         name = player['name']
         password = player['password']
 
@@ -127,7 +127,7 @@ def level_up():
     status_code = 200
     return_level = 0
     try:
-        player = json.loads(request.data)
+        player = request.args
         name = player['name']
 
         # Fetch the player from the database
@@ -160,7 +160,7 @@ def level_down():
     status_code = 200
     return_level = 0
     try:
-        player = json.loads(request.data)
+        player = request.args
         name = player['name']
 
         # Fetch the player from the database
