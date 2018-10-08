@@ -12,8 +12,7 @@ export const setSpells = (spells) => ({
 
 // reducer
 const defaultState = {
-    data: {name: 'test'},
-    status: 'OK'
+    status: 'LOADING'
 }
 
 var reducer = (state=defaultState, action) => {

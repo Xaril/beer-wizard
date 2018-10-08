@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import ListOfPlayersContainer from './AllPlayersView/ListOfPlayersContainer';
 import HomeContainer from './HomeView/HomeContainer'
+import SpellsContainer from './SpellsView/SpellsContainer'
 import {
   BrowserRouter as Router,
   Route,
@@ -19,10 +20,10 @@ class App extends Component {
             <div>
               <Route exact path="/" component={HomeContainer}/>
               <Route path="/players" component={ListOfPlayersContainer}/>
-              <Route path="/spells" component={ListOfPlayersContainer}/>
+              <Route path="/spells" component={SpellsContainer}/>
 
               <div
-                style={{backgroundColor:'white', position:'fixed', bottom:0, right: 0, left: 0}}>
+                style={{backgroundColor:'white', position:'sticky', bottom:0, right: 0, left: 0, padding: 5}}>
                 <Link to="/players">
                   <button type="button">Players</button>
                 </Link>
