@@ -15,4 +15,4 @@ import psycopg2.extras
 @app.route('/test')
 @cross_origin()
 def test():
-    return jsonify({'test': 4})
+    return 200, jsonify({'test': 4})
