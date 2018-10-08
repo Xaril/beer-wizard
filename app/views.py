@@ -7,6 +7,7 @@
 from app import app, mysql
 from flask import jsonify, request
 from flask_cors import cross_origin
+import json
 import traceback
 
 # Retrieves all spells possible to cast
@@ -70,3 +71,26 @@ def get_player():
         traceback.print_exc()
         status_code = 500
     return jsonify({'player': player}), status_code
+
+# Adds a player to the database if a player with that name does not
+# already exist.
+@app.route('/api/register_player', methods=['POST'])
+@cross_origin()
+def register_player():
+    status_code = 200
+    return_name = ''
+    try:
+        player = json.loads(request.data)
+        name = player['name']
+        password = player['password']
+
+        # Add the player to the database
+        cur = mysql.connection.cursor()
+        cur.execute('''INSERT INTO user VALUES (%s, %s, 1);''', [name, password])
+        mysql.connection.commit()
+
+        return_name = name
+    except:
+        traceback.print_exc()
+        status_code = 500
+    return jsonify({'name': return_name}), status_code
