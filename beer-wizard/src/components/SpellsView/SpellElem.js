@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class SpellElem extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+class SpellElem extends React.Component  {
     render() {
         const spell = this.props.spell;
         return (
