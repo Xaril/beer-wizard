@@ -74,20 +74,26 @@ var players = [
 class ListOfPlayers extends Component {
     componentDidMount() {
         console.log(this.props);
+        //this.props.load();
     }
     render() {
-        var sortedListObject = _.groupBy(players, "level");
+        var loading = this.props.players.status === "UPDATING";
+        if (loading){
+            return <h3>FETCHING</h3>
+        } else {
+            var sortedListObject = _.groupBy(players, "level");
+            return (
+                <div>
+                    <Header header="Players"/>
         
-        return (
-        <div>
-            <Header header="Players"/>
-
-            {Object.keys(sortedListObject).map((level, index) => {
-                return <PlayersOnLevel level={level} players={sortedListObject[level]} key={index} />
-                
-            })}
-          </div>
-        );
+                    {Object.keys(sortedListObject).map((level, index) => {
+                        return <PlayersOnLevel level={level} players={sortedListObject[level]} key={index} />
+                        
+                    })}
+                    </div>
+                );
+        }
+        
     }
 }
 
