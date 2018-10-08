@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PlayersOnLevel from './PlayersOnLevel';
 import _ from 'lodash'
-
+import Header from '../../shared-components/Header';
 
 var players = [
     {
@@ -82,12 +82,7 @@ class ListOfPlayers extends Component {
         
         return (
         <div>
-            <div style={{backgroundColor:'white', position:'fixed', top:0, right: 0, left: 0, padding: 5}}>
-                <h1>
-                    Players
-                </h1>
-            </div>
-            
+            <Header header="Players"/>
 
             {Object.keys(sortedListObject).map((level) => {
                 return <PlayersOnLevel level={level} players={sortedListObject[level]}/>

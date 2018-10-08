@@ -4,8 +4,7 @@ import Player from '../../shared-components/Player';
 class PlayersOnLevel extends Component {
     render() {
         return (
-        <div 
-            style={{flex: 1}}>
+        <div>
             <h2>{this.props.level}</h2>
             {
                 this.props.players.map(player => (
