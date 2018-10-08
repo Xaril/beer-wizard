@@ -28,7 +28,9 @@ var players = [
 ]
 class ListOfPlayers extends Component {
     componentDidMount() {
+        console.log("did mount");
         console.log(this.props);
+        this.props.load();
     }
     render() {
         var sortedList = _.groupBy(players, "level");
