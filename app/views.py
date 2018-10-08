@@ -11,7 +11,6 @@ import psycopg2
 import psycopg2.extras
 
 # Routes the address to show the interface html file
-@app.route('/')
 @app.route('/test')
 def test():
     return jsonify({'test': 4})
