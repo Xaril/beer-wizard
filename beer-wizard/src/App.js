@@ -4,7 +4,7 @@ import './App.css';
 
 class App extends Component {
     componentDidMount(props) {
-        fetch('/test').then(res => {
+        fetch('http://localhost:8332/test').then(res => {
             console.log(res)
         });
     }
