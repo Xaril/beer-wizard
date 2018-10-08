@@ -1,11 +1,12 @@
 import {dispatch} from 'redux';
+import { combineReducers } from 'redux';
 
-var defaultState = {
+const defaultState = {
     data: {name: 'test'},
     status: 'Ok'
 }
 
-var reducer = () => (rootState=defaultState, dispatch) => {
+var reducer = (rootState=defaultState, dispatch) => {
     return rootState;
 }
 

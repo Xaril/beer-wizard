@@ -24,14 +24,16 @@ var players = [
         name: "Pelle",
         level: 2
     },
-    
-] 
-class ListOfPlayers extends Component {
 
+]
+class ListOfPlayers extends Component {
+    componentDidMount() {
+        console.log(this.props);
+    }
     render() {
         var sortedList = _.groupBy(players, "level");
         return (
-        <div 
+        <div
             style={{flex: 1}}>
             <h1>Players</h1>
 
