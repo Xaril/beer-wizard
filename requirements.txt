@@ -1,4 +1,4 @@
 flask
 twisted
-psycopg2
 flask-cors
+flask-mysqldb
