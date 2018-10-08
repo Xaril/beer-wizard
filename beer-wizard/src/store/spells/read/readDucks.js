@@ -35,9 +35,9 @@ var reducer = (state=defaultState, action) => {
 export default reducer;
 
 // Thunks
-export const getAllPlayers = () => dispatch => {
+export const getAllSpells = () => dispatch => {
     dispatch(loadSpells())
-    api.get('get_all_players').then(response => {
+    api.get('get_all_spells').then(response => {
         if (api.isOK(response)) {
             dispatch(setSpells(response.data))
         }
