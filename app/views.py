@@ -57,11 +57,11 @@ def get_player():
     player = ''
     try:
         # Retrieve the name of the player looked for
-        name = request.get_json()['name']
+        player_name = request.get_json()['name']
 
         # Fetch the player from the database
         cur = mysql.connection.cursor()
-        cur.execute('''SELECT name, level FROM user WHERE name=%s;''', (name))
+        cur.execute('''SELECT name, level FROM user WHERE name=%s;''', [player_name])
         results = cur.fetchall()
 
         if results:
