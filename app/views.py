@@ -94,3 +94,28 @@ def register_player():
         traceback.print_exc()
         status_code = 500
     return jsonify({'name': return_name}), status_code
+
+# Attempts to login a player and returns true and the player's name
+# if successful, false otherwise.
+@app.route('/api/login_player')
+@cross_origin()
+def login_player():
+    status_code = 200
+    return_name = ''
+    success = False
+    try:
+        player = json.loads(request.data)
+        name = player['name']
+        password = player['password']
+
+        # Add the player to the database
+        cur = mysql.connection.cursor()
+        cur.execute('''SELECT name FROM user WHERE name=%s AND password=%s;''', [name, password])
+        result = cur.fetchall()
+        if result:
+            return_name = result[0]['name']
+            success = True
+    except:
+        traceback.print_exc()
+        status_code = 500
+    return jsonify({'name': return_name, 'success': success}), status_code
