@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ListOfPlayersContainer from './AllPlayersView/ListOfPlayersContainer';
+import HomeContainer from './HomeView/HomeContainer'
 import {
   BrowserRouter as Router,
   Route,
@@ -16,10 +17,10 @@ class App extends Component {
         return (
           <Router>
             <div>
-              <Route exact path="/" component={ListOfPlayersContainer}/>
+              <Route exact path="/" component={HomeContainer}/>
               <Route path="/players" component={ListOfPlayersContainer}/>
               <Route path="/spells" component={ListOfPlayersContainer}/>
-              
+
               <div
                 style={{backgroundColor:'white', position:'fixed', bottom:0, right: 0, left: 0}}>
                 <Link to="/players">
@@ -34,7 +35,7 @@ class App extends Component {
                   <button type="button">Spells</button>
                 </Link>
               </div>
-              
+
             </div>
           </Router>
         );
