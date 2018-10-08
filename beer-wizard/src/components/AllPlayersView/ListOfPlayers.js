@@ -16,17 +16,17 @@ class ListOfPlayers extends Component {
             var sortedListObject = _.groupBy(this.props.players.data.players, "level");
             console.log(sortedListObject);
             return (
-                <div>
+                <div style={{backgroundColor:'#d3d3d3'}}>
                     <Header header="Players"/>
-        
+
                     {Object.keys(sortedListObject).map((level, index) => {
                         return <PlayersOnLevel level={level} players={sortedListObject[level]} key={index} />
-                        
+
                     })}
                     </div>
                 );
         }
-        
+
     }
 }
 
