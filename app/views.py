@@ -108,7 +108,7 @@ def login_player():
         name = player['name']
         password = player['password']
 
-        # Add the player to the database
+        # Check if the player exists in the database and return true if true
         cur = mysql.connection.cursor()
         cur.execute('''SELECT name FROM user WHERE name=%s AND password=%s;''', [name, password])
         result = cur.fetchall()
@@ -119,3 +119,69 @@ def login_player():
         traceback.print_exc()
         status_code = 500
     return jsonify({'name': return_name, 'success': success}), status_code
+
+# Levels up a player
+@app.route('/api/level_up', methods=['POST'])
+@cross_origin()
+def level_up():
+    status_code = 200
+    return_level = 0
+    try:
+        player = json.loads(request.data)
+        name = player['name']
+
+        # Fetch the player from the database
+        cur = mysql.connection.cursor()
+        cur.execute('''SELECT level FROM user WHERE name=%s;''', [name])
+        results = cur.fetchall()
+        level = 0
+        if results:
+            level = results[0]['level']
+        else:
+            return jsonify({'level': return_level}), status_code
+        if level == 9:
+            return jsonify({'level': level}), status_code
+
+        # Update the level by 1
+        print(level)
+        cur.execute('''UPDATE user SET level=%s WHERE name=%s;''', [int(level) + 1, name])
+        mysql.connection.commit()
+
+        return_level = level + 1
+    except:
+        traceback.print_exc()
+        status_code = 500
+    return jsonify({'level': return_level}), status_code
+
+# Levels down a player
+@app.route('/api/level_down', methods=['POST'])
+@cross_origin()
+def level_down():
+    status_code = 200
+    return_level = 0
+    try:
+        player = json.loads(request.data)
+        name = player['name']
+
+        # Fetch the player from the database
+        cur = mysql.connection.cursor()
+        cur.execute('''SELECT level FROM user WHERE name=%s;''', [name])
+        results = cur.fetchall()
+        level = 0
+        if results:
+            level = results[0]['level']
+        else:
+            return jsonify({'level': return_level}), status_code
+        if level == 1:
+            return jsonify({'level': level}), status_code
+
+        # Update the level by 1
+        print(level)
+        cur.execute('''UPDATE user SET level=%s WHERE name=%s;''', [int(level) - 1, name])
+        mysql.connection.commit()
+
+        return_level = level - 1
+    except:
+        traceback.print_exc()
+        status_code = 500
+    return jsonify({'level': return_level}), status_code
