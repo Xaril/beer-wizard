@@ -8,7 +8,7 @@ var simpleReducer = (state = {}, action) => {
  switch (action.type) {
   case 'SIMPLE_ACTION':
    return {
-     ..state,
+     ...state,
     result: action.payload
    }
   default:
