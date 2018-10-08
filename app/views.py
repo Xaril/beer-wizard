@@ -18,7 +18,7 @@ def get_all_spells():
     try:
         # Fetch the spells from the database
         cur = mysql.connection.cursor()
-        cur.execute('''SELECT * FROM spell ORDER BY level ASC''')
+        cur.execute('''SELECT * FROM spell ORDER BY level ASC;''')
         results = cur.fetchall()
 
         # Add the spells to a list
@@ -38,13 +38,35 @@ def get_all_players():
     try:
         # Fetch the players from the database
         cur = mysql.connection.cursor()
-        cur.execute('''SELECT name, level FROM user''')
+        cur.execute('''SELECT name, level FROM user;''')
         results = cur.fetchall()
 
-        # Add the spells to a list
+        # Add the players to a list
         for result in results:
             players.append(result)
     except:
         traceback.print_exc()
         status_code = 500
     return jsonify({'players': players}), status_code
+
+# Retrieves a single player based on name
+@app.route('/api/get_player')
+@cross_origin()
+def get_player():
+    status_code = 200
+    player = ''
+    try:
+        # Retrieve the name of the player looked for
+        name = request.get_json()['name']
+
+        # Fetch the player from the database
+        cur = mysql.connection.cursor()
+        cur.execute('''SELECT name, level FROM user WHERE name=%s;''', (name))
+        results = cur.fetchall()
+
+        if results:
+            player = results[0]
+    except:
+        traceback.print_exc()
+        status_code = 500
+    return jsonify({'player': player}), status_code
