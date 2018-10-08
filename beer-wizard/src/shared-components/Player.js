@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-class PlayerName extends Component {
+class Player extends Component {
     render() {
         return (
         <div 
             style={{flex: 1}}>
-            <h2>{this.props.name}</h2>
+            <h3>{this.props.name}</h3>
           </div>
         );
     }
 }
 
-export default PlayerName;
+export default Player;

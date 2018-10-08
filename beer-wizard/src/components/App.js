@@ -20,7 +20,8 @@ class App extends Component {
               <Route path="/players" component={ListOfPlayersContainer}/>
               <Route path="/spells" component={ListOfPlayersContainer}/>
               
-              <div>
+              <div
+                style={{backgroundColor:'white', position:'fixed', bottom:0, right: 0, left: 0}}>
                 <Link to="/players">
                   <button type="button">Players</button>
                 </Link>

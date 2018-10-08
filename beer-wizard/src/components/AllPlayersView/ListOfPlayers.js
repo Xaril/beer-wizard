@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PlayerName from './PlayerName';
+import PlayersOnLevel from './PlayersOnLevel';
 import _ from 'lodash'
 
 
@@ -14,16 +14,61 @@ var players = [
     },
     {
         name: "Anton",
-        level: 2
+        level: 3
     },
     {
         name: "Erik",
-        level: 2
+        level: 3
     },
     {
         name: "Pelle",
-        level: 2
+        level: 3
     },
+    {
+        name: "Anton",
+        level: 3
+    },
+    {
+        name: "Erik",
+        level: 3
+    },
+    {
+        name: "Pelle",
+        level: 3
+    },
+    {
+        name: "Anton",
+        level: 3
+    },
+    {
+        name: "Erik",
+        level: 3
+    },
+    {
+        name: "Pelle",
+        level: 3
+    },
+    {
+        name: "Anton",
+        level: 4
+    },
+    {
+        name: "Erik",
+        level: 4
+    },
+    {
+        name: "Pelle",
+        level: 5
+    },
+    {
+        name: "Erik",
+        level: 5
+    },
+    {
+        name: "Pelle",
+        level: 5
+    },
+    
 
 ]
 class ListOfPlayers extends Component {
@@ -33,15 +78,21 @@ class ListOfPlayers extends Component {
         this.props.load();
     }
     render() {
-        var sortedList = _.groupBy(players, "level");
+        var sortedListObject = _.groupBy(players, "level");
+        
         return (
-        <div
-            style={{flex: 1}}>
-            <h1>Players</h1>
+        <div>
+            <div style={{backgroundColor:'white', position:'fixed', top:0, right: 0, left: 0, padding: 5}}>
+                <h1>
+                    Players
+                </h1>
+            </div>
+            
 
-            {players.map(player => (
-                <PlayerName name={player.name}/>
-            ))}
+            {Object.keys(sortedListObject).map((level) => {
+                return <PlayersOnLevel level={level} players={sortedListObject[level]}/>
+                
+            })}
           </div>
         );
     }
