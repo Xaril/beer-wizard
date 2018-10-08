@@ -73,9 +73,7 @@ var players = [
 ]
 class ListOfPlayers extends Component {
     componentDidMount() {
-        console.log("did mount");
         console.log(this.props);
-        this.props.load();
     }
     render() {
         var sortedListObject = _.groupBy(players, "level");
@@ -84,8 +82,8 @@ class ListOfPlayers extends Component {
         <div>
             <Header header="Players"/>
 
-            {Object.keys(sortedListObject).map((level) => {
-                return <PlayersOnLevel level={level} players={sortedListObject[level]}/>
+            {Object.keys(sortedListObject).map((level, index) => {
+                return <PlayersOnLevel level={level} players={sortedListObject[level]} key={index} />
                 
             })}
           </div>

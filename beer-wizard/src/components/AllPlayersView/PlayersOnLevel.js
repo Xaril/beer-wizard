@@ -7,8 +7,8 @@ class PlayersOnLevel extends Component {
         <div>
             <h2>{this.props.level}</h2>
             {
-                this.props.players.map(player => (
-                    <Player name={player.name}/>
+                this.props.players.map((player, index) => (
+                    <Player name={player.name} key={index}/>
                 ))
             }
           </div>
