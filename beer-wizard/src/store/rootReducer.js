@@ -3,20 +3,10 @@
 */
 import { combineReducers } from 'redux';
 import PlayersReducer from './players';
+import SpellsReducer from './spells';
 
-var simpleReducer = (state = {}, action) => {
- switch (action.type) {
-  case 'SIMPLE_ACTION':
-   return {
-     ...state,
-    result: action.payload
-   }
-  default:
-   return state
- }
-}
 
 export default combineReducers({
- simpleReducer: simpleReducer,
+ spells: SpellsReducer,
  players: PlayersReducer,
 });
