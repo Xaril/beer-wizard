@@ -40,7 +40,7 @@ export const register = (name, password) => dispatch => {
         name: name,
         password: password,
     }
-    api.get('register_player', payload).then(response => {
+    api.post('register_player', payload).then(response => {
         if (api.isOK(response)) {
             dispatch(getUser(response.data.name));
         }

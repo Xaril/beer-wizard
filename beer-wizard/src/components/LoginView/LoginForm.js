@@ -23,7 +23,7 @@ class LoginForm extends Component {
     render() {
         return (
             <div style={{}}>
-                <div style={{display: 'flex'}}>
+                <div style={{display: 'flex', position: 'relative'}}>
                     <div style={{flexGrow: 1}}>
                         <div style={{fontSize: 10}}>
                             Name:
