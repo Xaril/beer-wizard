@@ -7,9 +7,7 @@ export const get = (path, payload) => {
 }
 
 export const post = (path, payload) => {
-    return axios.post('http://localhost:8332/api/' + path, {
-        params: payload,
-    })
+    return axios.post('http://localhost:8332/api/' + path, payload)
 }
 
 export const isOK = (response) => {
