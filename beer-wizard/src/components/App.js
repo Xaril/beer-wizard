@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ListOfPlayersContainer from './AllPlayersView/ListOfPlayersContainer';
-import HomeContainer from './HomeView/HomeContainer'
-import SpellsContainer from './SpellsView/SpellsContainer'
+import LoginContainer from './LoginView/LoginContainer';
+import SpellsContainer from './SpellsView/SpellsContainer';
+import HomeContainer from './HomeView/HomeContainer';
 import {
   BrowserRouter as Router,
   Route,
@@ -15,6 +16,10 @@ import {
 class App extends Component {
 
     render() {
+        if (!this.props.loggedIn) {
+            return <LoginContainer />
+        }
+
         return (
           <Router>
             <div style={{backgroundColor:'#d3d3d3'}}>
