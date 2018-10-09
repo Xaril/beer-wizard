@@ -43,7 +43,7 @@ export const register = (name, password) => dispatch => {
     }
     api.get('register_player', payload).then(response => {
         if (api.isOK(response)) {
-            dispatch(getUser(response.data));
+            dispatch(getUser(response.data.name));
         }
     })
 }
@@ -56,7 +56,9 @@ export const login = (name, password) => dispatch => {
     }
     api.get('login_player', payload).then(response => {
         if (api.isOK(response)) {
-            dispatch(getUser(response.data));
+            if (response.data.success) {
+                dispatch(getUser(response.data.name));
+            }
         }
     })
 }

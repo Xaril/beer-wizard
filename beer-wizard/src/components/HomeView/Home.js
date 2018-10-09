@@ -17,7 +17,7 @@ class Home extends Component {
 
     handleSubmit = (event) => {
         console.log("Login in with name", this.state.name, " and password", this.state.password);
-        //this.props.login(this.state.name, this.state.password);
+        this.props.login(this.state.name, this.state.password);
         event.preventDefault();
     }
 

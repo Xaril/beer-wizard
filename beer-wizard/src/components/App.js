@@ -17,13 +17,14 @@ class App extends Component {
     render() {
         return (
           <Router>
-            <div>
-              <Route exact path="/" component={HomeContainer}/>
-              <Route path="/players" component={ListOfPlayersContainer}/>
-              <Route path="/spells" component={SpellsContainer}/>
-
+            <div style={{}}>
+                <div>
+                    <Route exact path="/" component={HomeContainer}/>
+                    <Route path="/players" component={ListOfPlayersContainer}/>
+                    <Route path="/spells" component={SpellsContainer}/>
+                </div>
               <div
-                style={{backgroundColor:'white', position:'sticky', bottom:0, right: 0, left: 0, padding: 5}}>
+                style={{backgroundColor:'white', position:'absolute', bottom:0, right: 0, left: 0, padding: 5}}>
                 <Link to="/players">
                   <button type="button">Players</button>
                 </Link>
