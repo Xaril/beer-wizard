@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const mapStateToProps = (rootState) => {
     var user = rootState.user.read;
     return {
-        user: user,
+        user: user.data.player,
     }
 }
 

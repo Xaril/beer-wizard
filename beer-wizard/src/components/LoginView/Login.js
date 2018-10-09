@@ -9,6 +9,12 @@ class Login extends Component {
         }
     }
 
+    componentDidMount() {
+        if (window.sessionStorage.name !== undefined) {
+            this.props.getUser(window.sessionStorage.name)
+        }
+    }
+
     render() {
 
         return (

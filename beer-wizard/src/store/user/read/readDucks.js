@@ -43,6 +43,7 @@ export const register = (name, password) => dispatch => {
     api.post('register_player', payload).then(response => {
         if (api.isOK(response)) {
             dispatch(getUser(response.data.name));
+            window.sessionStorage['name'] = response.data.name;
         }
     })
 }
@@ -57,6 +58,7 @@ export const login = (name, password) => dispatch => {
         if (api.isOK(response)) {
             if (response.data.success) {
                 dispatch(getUser(response.data.name));
+                window.sessionStorage['name'] = response.data.name;
             }
         }
     })
