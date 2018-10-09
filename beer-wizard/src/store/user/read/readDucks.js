@@ -12,8 +12,7 @@ export const setUser = (user) => ({
 
 // reducer
 const defaultState = {
-    data: {name: 'test'},
-    status: 'OK'
+    status: 'NOT_LOGGED_IN'
 }
 
 var reducer = (state=defaultState, action) => {
