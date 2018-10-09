@@ -80,7 +80,7 @@ def register_player():
     status_code = 200
     return_name = ''
     try:
-        player = request.args
+        player = json.loads(request.json)
         name = player['name']
         password = player['password']
 
@@ -127,7 +127,7 @@ def level_up():
     status_code = 200
     return_level = 0
     try:
-        player = request.args
+        player = json.loads(request.json)
         name = player['name']
 
         # Fetch the player from the database
@@ -160,7 +160,7 @@ def level_down():
     status_code = 200
     return_level = 0
     try:
-        player = request.args
+        player = json.loads(request.json)
         name = player['name']
 
         # Fetch the player from the database
